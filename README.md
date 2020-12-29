@@ -1,5 +1,5 @@
 
-# Petful 
+# Petful Client
 
 [Link to live app](https://petful-client-beta.vercel.app)
 
