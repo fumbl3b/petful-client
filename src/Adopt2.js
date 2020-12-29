@@ -63,7 +63,7 @@ export default class Adopt2 extends React.Component {
   }
 
   fakeIteration = () => {
-    if(this.state.userInQueue && this.state.userInQueue !== this.state.people[0]) {
+    if (this.state.userInQueue && this.state.userInQueue !== this.state.people[0]) {
       //this.handleAdopt();
       if (this.state.people.length < 10) {
         peopleService.addPerson(this.state.names[Math.floor(Math.random() * this.state.names.length)])
@@ -87,27 +87,32 @@ export default class Adopt2 extends React.Component {
     return (
       <div>
         {this.state.userAdopted && (
-          <div>
+          <div style={{ maxWidth: '50vw'}}>
             <h1>Congrats, you adopted:</h1>
             <Animal pet={this.state.adoptedPet} />
+            <p>Please contact our office to arrange pickup. :)</p>
           </div>
         )}
 
-        {!this.state.userAdopted && (
+        
           <div>
             {/* <button onClick={this.handleAdopt}>Adopt</button> */}
             {!this.state.userInQueue && <button onClick={this.handleJoinQueue}>Join Queue</button>}
-            <h4>Current Adoption Queue: {this.state.people.length}</h4>
-            <ul>
-              {people.map((person, idx) => {
-                if (idx === 0)
-                  return <li key={idx} style={{ fontSize: 40 }}>Currently Up: {person}</li>;
-                else if (idx < 10)
-                  return <li key={idx}>{person}</li>;
-                else
-                  return;
-              })}
-            </ul>
+            <div className='queue'>
+              <h4>Current Adoption Queue: {this.state.people.length}</h4>
+              <ul>
+                {people.map((person, idx) => {
+                  if (idx === 0)
+                    return <li key={idx} style={{ fontSize: 40 }}>Currently Up: {person}</li>;
+                  else if (idx < 10)
+                    return <li key={idx}>{person}</li>;
+                  else
+                    return;
+                })}
+              </ul>
+
+            </div>
+
             <div className='pet-box'>
               {userInQueue === people[0] && <button onClick={() => this.handleUserAdopt('cat')}>Adopt {this.state.cat.name}</button>}
               {userInQueue === people[0] && <button onClick={() => this.handleUserAdopt('dog')}>Adopt {this.state.dog.name}</button>}
@@ -117,7 +122,6 @@ export default class Adopt2 extends React.Component {
               <Animal pet={this.state.dog} />
             </div>
           </div>
-        )}
       </div>
     )
   }

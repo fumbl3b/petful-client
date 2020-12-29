@@ -10,8 +10,26 @@ div {
   flex-direction: column;
 }
 
+.queue {
+  display: flex;
+  justify-content: right;
+  max-width: 40vw;
+}
+.landing {
+  align-self: center;
+  max-width: 50vw;
+}
+.pet {
+  background-color: ivory;
+  max-width: 400px;
+  margin: 10px 5px;
+  padding: 15px;
+  flex-flow: column;
+}
+
 .pet-box {
   flex-direction: row;
+  justify-content: space-between;
   padding: 5px;
   margin: 5px;
 }
@@ -22,6 +40,6 @@ p {
 }
 
 img {
-  border-radius: 30px;
-  max-width: 50vw;
+  border-radius: 3px;
+  width: 400px;
 }

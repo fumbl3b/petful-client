@@ -2,7 +2,7 @@ import React from 'react'
 import Landing from '../Landing'
 import Adopt from '../Adopt'
 import Adopt2 from '../Adopt2'
-import { Switch } from 'react-router-dom'
+import { Switch, Link } from 'react-router-dom'
 
 
 class Root extends React.Component {
@@ -15,7 +15,7 @@ class Root extends React.Component {
   render() {
     return (
       <div>
-        <h1>Petful</h1>
+        <Link to='/'><h1>Petful</h1></Link>
         <Switch>
           <Landing exact path={'/'} />
           <Adopt2 path={'/adopt'} />
