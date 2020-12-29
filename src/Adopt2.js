@@ -65,7 +65,7 @@ export default class Adopt2 extends React.Component {
   fakeIteration = () => {
     if (this.state.userInQueue && this.state.userInQueue !== this.state.people[0]) {
       //this.handleAdopt();
-      if (this.state.people.length < 10) {
+      if (this.state.people.length < 5) {
         peopleService.addPerson(this.state.names[Math.floor(Math.random() * this.state.names.length)])
           .then(() => {
             setTimeout(this.handleAdopt, 2000);
