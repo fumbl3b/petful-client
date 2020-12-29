@@ -2,7 +2,9 @@
 # Petful 
 
 [Link to live app](https://petful-client-beta.vercel.app)
+
 [Link to client repo](https://github.com/fumbl3b/petful-client)
+
 [Link to API repo](https://github.com/fumbl3b/petful-server)
 
 ### Summary
