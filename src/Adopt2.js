@@ -7,6 +7,7 @@ export default class Adopt2 extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      userName: '',
       people: [],
       names: ['Agatha', 'Brinette', 'Chris', 'Desdemona', 'Evelyn', 'Francis', 'Grant'],
       dog: [],
@@ -52,10 +53,10 @@ export default class Adopt2 extends React.Component {
 
   handleJoinQueue = () => {
     if (!this.state.userInQueue) {
-      peopleService.addPerson('You')
+      peopleService.addPerson(this.state.userName)
         .then((res) => {
           this.setState({
-            userInQueue: 'You'
+            userInQueue: this.state.userName
           })
           this.updateData();
         })
@@ -65,7 +66,7 @@ export default class Adopt2 extends React.Component {
   fakeIteration = () => {
     if (this.state.userInQueue && this.state.userInQueue !== this.state.people[0]) {
       //this.handleAdopt();
-      if (this.state.people.length < 5) {
+      if (this.state.people.length <= 5) {
         peopleService.addPerson(this.state.names[Math.floor(Math.random() * this.state.names.length)])
           .then(() => {
             setTimeout(this.handleAdopt, 2000);
@@ -75,6 +76,13 @@ export default class Adopt2 extends React.Component {
           })
       }
     }
+  }
+
+  handleNameChange = (e) => {
+    e.preventDefault();
+    this.setState({
+      userName: e.target.value
+    })
   }
 
   componentDidMount() {
@@ -97,7 +105,11 @@ export default class Adopt2 extends React.Component {
         
           <div>
             {/* <button onClick={this.handleAdopt}>Adopt</button> */}
-            {!this.state.userInQueue && <button onClick={this.handleJoinQueue}>Join Queue</button>}
+            {!this.state.userInQueue && (<>
+            <span>Enter your name:</span>
+              <input onChange={this.handleNameChange} value={this.state.userName} />
+              <button onClick={this.handleJoinQueue}>Join Queue</button>
+           </>)}
             <div className='queue'>
               <h4>Current Adoption Queue: {this.state.people.length}</h4>
               <ul>
